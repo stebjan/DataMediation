@@ -1,5 +1,6 @@
 package mediation.tree;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class Node implements Iterable<Node> {
         this.name = name;
         this.minOccurs = minOccurs;
         this.maxOccurs = maxOccurs;
+        children = new ArrayList<Node>();
     }
 
 

@@ -12,7 +12,6 @@ public class Tree {
 
     public Tree(String rootName) {
         this.root = new Node(rootName);
-        this.root.setChildren(new ArrayList<Node>());
     }
 
     public Node getRoot() {

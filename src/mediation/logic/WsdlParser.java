@@ -13,13 +13,16 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by stebjan on 17.6.2015.
  */
 public class WsdlParser {
 
-    public Tree parseXmlFile(File file) throws ParserConfigurationException, SAXException, IOException {
+    private NodeList listOfComplexTypes;
+
+    public Tree parseXmlFile(File file, ParameterType type) throws ParserConfigurationException, SAXException, IOException {
 
         Tree syntaxTree = null;
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -27,29 +30,27 @@ public class WsdlParser {
         Document doc = dBuilder.parse(file);
 
         doc.getDocumentElement().normalize();
+        listOfComplexTypes = doc.getElementsByTagName("xs:complexType");
 
-        System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
-
-        Element root = getRoot(doc);
+        Element root = getRoot(type, doc);
         if (root != null) {
 
             syntaxTree = new Tree(root.getAttribute("name"));
             System.out.println(syntaxTree.getRoot().getName());
-            findChildElement(root);
+            findChildElements(root, syntaxTree.getRoot());
         } else {
             //todo fuck with me
         }
         return syntaxTree;
     }
 
-    private Element getRoot(Document doc) {
-        NodeList list = doc.getElementsByTagName("xs:element");
-        System.out.println(list.getLength());
+    private Element getRoot(ParameterType type, Document doc) {
+        NodeList listOfElements = doc.getElementsByTagName("xs:element");
+        System.out.println(listOfElements.getLength());
         Element root;
-        for (int i = 0; i < list.getLength(); i++) {
-            root = (Element) list.item(i);
-            System.out.println(root.getAttribute("name"));
-            if (root.getAttribute("name").equals("Request")) {
+        for (int i = 0; i < listOfElements.getLength(); i++) {
+            root = (Element) listOfElements.item(i);
+            if (root.getAttribute("name").equals(type.getType())) {
                 return root;
             }
 
@@ -57,13 +58,57 @@ public class WsdlParser {
         return null;
     }
 
-    private Element findChildElement(Element element) {
+    private void findChildElements(Element element, Node node) {
+        if (element.hasAttribute("type")) {
+            for (int i = 0; i < listOfComplexTypes.getLength(); i++) {
+                Element complexType = (Element) listOfComplexTypes.item(i);
+                if (complexType.getAttribute("name").equals(element.getAttribute("type"))) {
+                    addElementToTree(complexType, node);
+
+                }
+            }
+
+        } else {
+
+            addElementToTree(element, node);
+        }
+
+    }
+
+    private void addElementToTree(Element element, Node node) {
         NodeList list = element.getElementsByTagName("xs:element");
         System.out.println(list.getLength());
         for (int i = 0; i < list.getLength(); i++) {
             Element e = (Element) list.item(i);
-        }
+            System.out.println(e.getAttribute("name"));
+            Node newNode = node.addChild(e.getAttribute("name"));
+            if (e.hasAttribute("minOccurs")) {
+                newNode.setMinOccurs(Integer.parseInt(e.getAttribute("minOccurs")));
+            }
+            if (e.hasAttribute("maxOccurs")) {
+                try {
+                    newNode.setMaxOccurs(Integer.parseInt(e.getAttribute("maxOccurs")));
+                } catch (NumberFormatException ex) {
+                    newNode.setMaxOccurs(Integer.MAX_VALUE);
+                }
+            }
 
-        return null;
+            if (!e.getAttribute("type").startsWith("xs")) {
+                findChildElements(e, newNode);
+            } else {
+                //add the leaf of the tree - primitive type
+                newNode.addChild(e.getAttribute("type"));
+                if (e.hasAttribute("minOccurs")) {
+                    newNode.setMinOccurs(Integer.parseInt(e.getAttribute("minOccurs")));
+                }
+                if (e.hasAttribute("maxOccurs")) {
+                    try {
+                        newNode.setMaxOccurs(Integer.parseInt(e.getAttribute("maxOccurs")));
+                    } catch (NumberFormatException ex) {
+                        newNode.setMaxOccurs(Integer.MAX_VALUE);
+                    }
+                }
+            }
+        }
     }
 }
