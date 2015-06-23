@@ -36,7 +36,7 @@ public class Main {
 
         DataMediator mediator = new EEGDataMediator();
         System.out.println(mediator.compatibleParameters("C:\\java\\eegdataprocessor\\trunk\\method_output_def\\detection_of_epochs.wsdl",
-                "C:\\java\\eegdataprocessor\\trunk\\method_output_def\\detection_of_epochs.wsdl"));
+                "C:\\java\\eegdataprocessor\\trunk\\method_output_def\\averaging.wsdl"));
 
     }
 }

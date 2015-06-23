@@ -58,6 +58,17 @@ public class EEGDataMediator implements DataMediator {
     }
 
     private boolean comparePaths(List<List<String>> outputPaths, List<List<String>> inputPaths) {
-        return false;
+        for (List<String> inputList: inputPaths) {
+            boolean inputInOutput = false;
+            for (List<String> outputList: outputPaths) {
+                if (outputList.containsAll(inputList)) {
+                    inputInOutput = true;
+                }
+            }
+            if (!inputInOutput) {
+                return false;
+            }
+        }
+        return true;
     }
 }
