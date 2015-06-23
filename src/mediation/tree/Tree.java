@@ -1,6 +1,7 @@
 package mediation.tree;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by stebjan on 17.6.2015.
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class Tree {
 
     private Node root;
+    private List<Node> leaves = new ArrayList<Node>();
 
     public Tree(String rootName) {
         this.root = new Node(rootName);
@@ -20,5 +22,13 @@ public class Tree {
 
     public void setRoot(Node root) {
         this.root = root;
+    }
+
+    public List<Node> getLeaves() {
+        return leaves;
+    }
+
+    public void setLeaves(List<Node> leaves) {
+        this.leaves = leaves;
     }
 }

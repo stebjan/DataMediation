@@ -35,8 +35,8 @@ public class Main {
         System.out.println(tree.getRoot().getChildren().get(1).getChildren().get(0).getChildren().get(2).getChildren().get(0).getName());
 
         DataMediator mediator = new EEGDataMediator();
-        System.out.println(mediator.compatibleParameters("C:\\eegdataprocessor\\trunk\\method_output_def\\detection_of_epochs.wsdl",
-                "C:\\eegdataprocessor\\trunk\\method_output_def\\averaging.wsdl"));
+        System.out.println(mediator.compatibleParameters("C:\\java\\eegdataprocessor\\trunk\\method_output_def\\detection_of_epochs.wsdl",
+                "C:\\java\\eegdataprocessor\\trunk\\method_output_def\\averaging.wsdl"));
 
     }
 }

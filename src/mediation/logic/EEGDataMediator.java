@@ -15,7 +15,9 @@ public class EEGDataMediator implements DataMediator {
     @Override
     public boolean compatibleParameters(File fileOfPreviousMethod, File fileOfNextMethod) throws IOException, SAXException, ParserConfigurationException {
         Tree outputTree = new WsdlParser().parseXmlFile(fileOfPreviousMethod, ParameterType.RESPONSE);
+        System.out.println("leaves: " + outputTree.getLeaves().size());
         Tree inputTree = new WsdlParser().parseXmlFile(fileOfNextMethod, ParameterType.REQUEST);
+        System.out.println("leaves: " + inputTree.getLeaves().size());
 
         return false;
     }

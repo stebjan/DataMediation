@@ -21,10 +21,11 @@ import java.util.List;
 public class WsdlParser {
 
     private NodeList listOfComplexTypes;
+    private Tree syntaxTree;
 
     public Tree parseXmlFile(File file, ParameterType type) throws ParserConfigurationException, SAXException, IOException {
 
-        Tree syntaxTree = null;
+        syntaxTree = null;
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(file);
@@ -97,7 +98,8 @@ public class WsdlParser {
                 findChildElements(e, newNode);
             } else {
                 //add the leaf of the tree - primitive type
-                newNode.addChild(e.getAttribute("type"));
+                Node leaf = newNode.addChild(e.getAttribute("type"));
+                syntaxTree.getLeaves().add(leaf);
                 if (e.hasAttribute("minOccurs")) {
                     newNode.setMinOccurs(Integer.parseInt(e.getAttribute("minOccurs")));
                 }
