@@ -4,9 +4,10 @@ import mediation.logic.DataMediator;
 import mediation.logic.EEGDataMediator;
 import mediation.logic.OntologyParser;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+
+import java.io.File;
 
 /**
  * Created by stebjan on 17.6.2015.
@@ -36,12 +37,12 @@ public class Main {
         DataMediator mediator = new EEGDataMediator();
         System.out.println(mediator.compatibleParameters("C:\\java\\eegdataprocessor\\trunk\\method_output_def\\detection_of_epochs.wsdl",
                 "C:\\java\\eegdataprocessor\\trunk\\method_output_def\\averaging.wsdl"));
-        String x = "http://ontology.neuinfo.org/NIF/Dysfunction/NIF-Dysfunction.owl";
+        String x = "C:\\protege-5.0.0-beta-17-win\\methodsTest.owl";
+        File file = new File(x);
 
-        IRI documentIRI = IRI.create(x);
         OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
         OWLOntology ontology = manager
-                .loadOntologyFromOntologyDocument(documentIRI);
+                .loadOntologyFromOntologyDocument(file);
         OntologyParser parser = new OntologyParser(ontology, manager.getOWLDataFactory());
         parser.parseOntology();
 

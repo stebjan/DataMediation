@@ -5,7 +5,7 @@ package mediation.logic;
  */
 public enum ParameterType {
 
-    REQUEST("Request"),
+    REQUEST("data"),
     RESPONSE("Response");
 
     private final String type;
