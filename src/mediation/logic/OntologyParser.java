@@ -26,9 +26,10 @@ public class OntologyParser {
 
         for (OWLClass cls : ontology.getClassesInSignature()) {
             String id = cls.getIRI().toString();
-            String label = get(cls, RDFS_LABEL.toString()).get(0);
-            System.out.println(label + " [" + id + "]");
+          //  String label = get(cls, RDFS_LABEL.toString()).get(0);
+            System.out.println( id );
         }
+        System.out.println(RDFS_LABEL.toString());
     }
 
     private List<String> get(OWLClass clazz, String property) {
