@@ -23,6 +23,23 @@ public class WsdlParser {
     private NodeList listOfComplexTypes;
     private Tree syntaxTree;
 
+    public String getSAWSDLAnnotation(File file, ParameterType type) throws ParserConfigurationException, IOException, SAXException {
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(file);
+
+        doc.getDocumentElement().normalize();
+        Element root = getRoot(type, doc);
+        NodeList list = root.getElementsByTagName("xs:element");
+        for (int i = 0; i < list.getLength(); i++) {
+            Element e = (Element) list.item(i);
+            if (e.hasAttribute("sawsdl:modelReference")) {
+                return e.getAttribute("sawsdl:modelReference");
+            }
+        }
+        return null;
+    }
+
     public Tree parseXmlFile(File file, ParameterType type) throws ParserConfigurationException, SAXException, IOException {
 
         syntaxTree = null;
@@ -37,7 +54,7 @@ public class WsdlParser {
         if (root != null) {
 
             syntaxTree = new Tree(root.getAttribute("name"));
-            System.out.println(syntaxTree.getRoot().getName());
+//            System.out.println(syntaxTree.getRoot().getName());
             findChildElements(root, syntaxTree.getRoot());
         } else {
             //todo fuck with me
@@ -47,7 +64,7 @@ public class WsdlParser {
 
     private Element getRoot(ParameterType type, Document doc) {
         NodeList listOfElements = doc.getElementsByTagName("xs:element");
-        System.out.println(listOfElements.getLength());
+//        System.out.println(listOfElements.getLength());
         Element root;
         for (int i = 0; i < listOfElements.getLength(); i++) {
             root = (Element) listOfElements.item(i);
@@ -78,10 +95,10 @@ public class WsdlParser {
 
     private void addElementToTree(Element element, Node node) {
         NodeList list = element.getElementsByTagName("xs:element");
-        System.out.println(list.getLength());
+//        System.out.println(list.getLength());
         for (int i = 0; i < list.getLength(); i++) {
             Element e = (Element) list.item(i);
-            System.out.println(e.getAttribute("name"));
+//            System.out.println(e.getAttribute("name"));
             Node newNode = node.addChild(e.getAttribute("name"));
             if (e.hasAttribute("minOccurs")) {
                 newNode.setMinOccurs(Integer.parseInt(e.getAttribute("minOccurs")));

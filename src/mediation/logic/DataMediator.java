@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public interface DataMediator {
 
-    public boolean compatibleParameters(File fileOfPreviousMethod, File fileOfNextMethod) throws IOException, SAXException, ParserConfigurationException;
+    public boolean compatibleParameters(File fileOfPreviousMethod, File fileOfNextMethod, OntologyParser parser) throws IOException, SAXException, ParserConfigurationException;
 
-    public boolean compatibleParameters(String fileOfPreviousMethod, String fileOfNextMethod) throws ParserConfigurationException, SAXException, IOException;
+    public boolean compatibleParameters(String fileOfPreviousMethod, String fileOfNextMethod, OntologyParser parser) throws ParserConfigurationException, SAXException, IOException;
 }

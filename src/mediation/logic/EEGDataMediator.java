@@ -16,7 +16,9 @@ import java.util.List;
 public class EEGDataMediator implements DataMediator {
 
     @Override
-    public boolean compatibleParameters(File fileOfPreviousMethod, File fileOfNextMethod) throws IOException, SAXException, ParserConfigurationException {
+    public boolean compatibleParameters(File fileOfPreviousMethod, File fileOfNextMethod, OntologyParser parser)
+            throws IOException, SAXException, ParserConfigurationException {
+        System.out.println("Output class: " + new WsdlParser().getSAWSDLAnnotation(fileOfPreviousMethod, ParameterType.RESPONSE));
         Tree outputTree = new WsdlParser().parseXmlFile(fileOfPreviousMethod, ParameterType.RESPONSE);
         List<List<String>> outputTreePaths = new ArrayList<List<String>>();
         List<List<String>> inputTreePaths = new ArrayList<List<String>>();
@@ -24,27 +26,30 @@ public class EEGDataMediator implements DataMediator {
         for (Node leaf: outputTree.getLeaves()) {
             List<String> outputPath = getNodePathFromLeaf(leaf, ParameterType.RESPONSE);
             outputTreePaths.add(outputPath);
-            for (String node : outputPath) {
-                System.out.println("node in path: " + node);
-            }
+//            for (String node : outputPath) {
+//                System.out.println("node in path: " + node);
+//            }
         }
+        System.out.println("Input class: " + new WsdlParser().getSAWSDLAnnotation(fileOfNextMethod, ParameterType.REQUEST));
         Tree inputTree = new WsdlParser().parseXmlFile(fileOfNextMethod, ParameterType.REQUEST);
         System.out.println("leaves: " + inputTree.getLeaves().size());
         for (Node leaf: inputTree.getLeaves()) {
             List<String> inputPath = getNodePathFromLeaf(leaf, ParameterType.REQUEST);
             inputTreePaths.add(inputPath);
-            for (String node : inputPath) {
-                System.out.println("node in path: " + node);
-            }
+//            for (String node : inputPath) {
+//                System.out.println("node in path: " + node);
+//            }
         }
-
+        parser.compatibleClasses(new WsdlParser().getSAWSDLAnnotation(fileOfPreviousMethod, ParameterType.RESPONSE),
+                new WsdlParser().getSAWSDLAnnotation(fileOfNextMethod, ParameterType.REQUEST));
         return comparePaths(outputTreePaths, inputTreePaths);
     }
 
     @Override
-    public boolean compatibleParameters(String fileOfPreviousMethod, String fileOfNextMethod) throws ParserConfigurationException, SAXException, IOException {
+    public boolean compatibleParameters(String fileOfPreviousMethod, String fileOfNextMethod, OntologyParser parser)
+            throws ParserConfigurationException, SAXException, IOException {
         return compatibleParameters(new File(fileOfPreviousMethod),
-                new File(fileOfNextMethod));
+                new File(fileOfNextMethod), parser);
     }
 
     private List<String> getNodePathFromLeaf(Node leaf, ParameterType type) {

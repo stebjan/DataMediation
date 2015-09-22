@@ -21,15 +21,50 @@ public class OntologyParser {
         this.df = df;
     }
 
-    public void parseOntology()
-            throws OWLOntologyCreationException {
+//    public void parseOntology()
+//            throws OWLOntologyCreationException {
+//
+//        for (OWLClass cls : ontology.getClassesInSignature()) {
+//            String id = cls.getIRI().toString();
+//          //  String label = get(cls, RDFS_LABEL.toString()).get(0);
+//            System.out.println( id );
+//        }
+//        System.out.println(RDFS_LABEL.toString());
+//    }
 
+    public boolean compatibleClasses(String responseClass, String requestClass) {
+        OWLClass response = null;
+        OWLClass request = null;
         for (OWLClass cls : ontology.getClassesInSignature()) {
             String id = cls.getIRI().toString();
-          //  String label = get(cls, RDFS_LABEL.toString()).get(0);
-            System.out.println( id );
+            if (id.equals(requestClass)) {
+                request = cls;
+            }
+            if (id.equals(responseClass)) {
+                response = cls;
+            }
         }
-        System.out.println(RDFS_LABEL.toString());
+        for (OWLSubClassOfAxiom subClass: ontology.getSubClassAxiomsForSuperClass(request)) {
+            System.out.println(request.toString());
+            System.out.println(subClass.getSubClass().toString());
+            if (response.toString().equals(subClass.getSubClass().toString())) {
+//                return true;
+            }
+        }
+
+        for(OWLEquivalentClassesAxiom subClass: ontology.getEquivalentClassesAxioms(request)) {
+            System.out.println(request.toString());
+            for (OWLClass clazz : subClass.getNamedClasses()) {
+            System.out.println(clazz.toString());
+                if (response.toString().equals(subClass.toString())) {
+//                    return true;
+                }
+            }
+        }
+//        for (OWLNamedIndividual individual :ontology.getIndividualsInSignature()) {
+//            individual.getIn;
+//        }
+        return false;
     }
 
     private List<String> get(OWLClass clazz, String property) {
