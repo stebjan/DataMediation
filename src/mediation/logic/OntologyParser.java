@@ -33,6 +33,9 @@ public class OntologyParser {
 //    }
 
     public boolean compatibleClasses(String responseClass, String requestClass) {
+        if (responseClass.equals(requestClass)) {
+            return true;
+        }
         OWLClass response = null;
         OWLClass request = null;
         for (OWLClass cls : ontology.getClassesInSignature()) {

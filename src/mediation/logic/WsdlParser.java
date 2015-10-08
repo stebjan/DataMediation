@@ -72,7 +72,7 @@ public class WsdlParser {
 //            System.out.println(syntaxTree.getRoot().getName());
             findChildElements(root, syntaxTree.getRoot());
         } else {
-            //todo fuck with me
+            throw new IllegalArgumentException("Invalid xml file, root not found!");
         }
         return syntaxTree;
     }

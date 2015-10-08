@@ -44,7 +44,7 @@ public class EEGDataMediator implements DataMediator {
 
         }
         String[] requestElementAndResponseAnnotation = new String[2];
-        requestElementAndResponseAnnotation[0] = new WsdlParser().getSAWSDLAnnotation(fileOfNextMethod, ParameterType.REQUEST)[0]; //todo
+        requestElementAndResponseAnnotation[0] = new WsdlParser().getSAWSDLAnnotation(fileOfNextMethod, ParameterType.REQUEST)[0];
         String responseClass = new WsdlParser().getSAWSDLAnnotation(fileOfPreviousMethod, ParameterType.RESPONSE)[1];
         int index = responseClass.lastIndexOf('#');
         responseClass = responseClass.substring(index + 1);
@@ -100,15 +100,16 @@ public class EEGDataMediator implements DataMediator {
         return path;
     }
 
-    public void mediateData(String filename) throws IOException {
-        mediateData(new File(filename));
+    public void mediateData(String filename, String fileOfPreviousMethod, String fileOfNextMethod) throws IOException, ParserConfigurationException, SAXException {
+        mediateData(new File(filename), new File(fileOfPreviousMethod), new File(fileOfNextMethod));
 
 
     }
 
-    public void mediateData(File file) throws IOException {
+    public void mediateData(File file, File fileOfPreviousMethod, File fileOfNextMethod) throws IOException, ParserConfigurationException, SAXException {
         String string = FileUtils.readFileToString(file);
-//string.replace
+        string = string.replaceAll(new WsdlParser().getSAWSDLAnnotation(fileOfPreviousMethod, ParameterType.RESPONSE)[0],
+                new WsdlParser().getSAWSDLAnnotation(fileOfNextMethod, ParameterType.REQUEST)[0]);
         FileUtils.writeStringToFile(file, string);
 
     }

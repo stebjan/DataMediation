@@ -17,4 +17,8 @@ public interface DataMediator {
     public boolean compatibleParameters(String fileOfPreviousMethod, String fileOfNextMethod, OntologyParser parser) throws ParserConfigurationException, SAXException, IOException;
 
     public Tree getOutputTree();
+
+    public void mediateData(String filename, String fileOfPreviousMethod, String fileOfNextMethod) throws IOException, ParserConfigurationException, SAXException;
+
+    public void mediateData(File file, File fileOfPreviousMethod, File fileOfNextMethod) throws IOException, ParserConfigurationException, SAXException;
 }
