@@ -13,7 +13,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by stebjan on 17.6.2015.
@@ -23,10 +26,20 @@ public class WsdlParser {
     private NodeList listOfComplexTypes;
     private Tree syntaxTree;
 
-    public String getSAWSDLAnnotation(File file, ParameterType type) throws ParserConfigurationException, IOException, SAXException {
+    /**
+     *
+     * @param file - WSDL description file
+     * @param type - Enum of types (Request or Response)
+     * @return Array of two strings - the first one is name of an element, the second one is the annotation
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws SAXException
+     */
+    public String[] getSAWSDLAnnotation(File file, ParameterType type) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(file);
+        String[] map = new String[2];
 
         doc.getDocumentElement().normalize();
         Element root = getRoot(type, doc);
@@ -34,7 +47,9 @@ public class WsdlParser {
         for (int i = 0; i < list.getLength(); i++) {
             Element e = (Element) list.item(i);
             if (e.hasAttribute("sawsdl:modelReference")) {
-                return e.getAttribute("sawsdl:modelReference");
+                map[0] = e.getAttribute("name");
+                map[1] = e.getAttribute("sawsdl:modelReference");
+                return map;
             }
         }
         return null;

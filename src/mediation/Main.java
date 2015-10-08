@@ -43,8 +43,10 @@ public class Main {
         OntologyParser parser = new OntologyParser(ontology, manager.getOWLDataFactory());
 
         DataMediator mediator = new EEGDataMediator();
-        System.out.println("Compatible: " + mediator.compatibleParameters("C:\\eegdataprocessor\\trunk\\method_output_def\\averaging.wsdl",
-                "C:\\eegdataprocessor\\trunk\\method_output_def\\fir.wsdl", parser));
+        System.out.println("Compatible: " + mediator.compatibleParameters("C:\\eegdataprocessor\\trunk\\method_output_def\\fir.wsdl",
+                "C:\\eegdataprocessor\\trunk\\method_output_def\\averaging.wsdl", parser));
+
+        mediator.getOutputTree();
 
 
 

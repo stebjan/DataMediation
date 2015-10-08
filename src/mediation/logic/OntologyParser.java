@@ -48,7 +48,7 @@ public class OntologyParser {
             System.out.println(request.toString());
             System.out.println(subClass.getSubClass().toString());
             if (response.toString().equals(subClass.getSubClass().toString())) {
-//                return true;
+                return true;
             }
         }
 
@@ -57,7 +57,7 @@ public class OntologyParser {
             for (OWLClass clazz : subClass.getNamedClasses()) {
             System.out.println(clazz.toString());
                 if (response.toString().equals(subClass.toString())) {
-//                    return true;
+                    return true;
                 }
             }
         }

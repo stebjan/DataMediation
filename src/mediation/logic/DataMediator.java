@@ -1,5 +1,6 @@
 package mediation.logic;
 
+import mediation.tree.Tree;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,4 +15,6 @@ public interface DataMediator {
     public boolean compatibleParameters(File fileOfPreviousMethod, File fileOfNextMethod, OntologyParser parser) throws IOException, SAXException, ParserConfigurationException;
 
     public boolean compatibleParameters(String fileOfPreviousMethod, String fileOfNextMethod, OntologyParser parser) throws ParserConfigurationException, SAXException, IOException;
+
+    public Tree getOutputTree();
 }
