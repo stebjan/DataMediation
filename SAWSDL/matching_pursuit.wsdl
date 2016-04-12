@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:description
+  xmlns:wsdl="http://www.w3.org/ns/wsdl"
+  xmlns:sawsdl="http://www.w3.org/ns/sawsdl">
+
+  <wsdl:types>
+      <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 targetNamespace="matching_pursuit"
+                 xmlns="matching_pursuit"
+                 elementFormDefault="qualified">
+      <xs:element name="data" >
+        <xs:complexType>
+           <xs:element name="epoch" type="signal" />
+        </xs:complexType>
+      </xs:element>
+      
+      <xs:element name="Response" >
+        <xs:complexType>
+          <xs:element name="atoms" type="atom" />     
+        </xs:complexType>
+      </xs:element>
+      
+      <xs:complexType name="signal">
+        <xs:sequence>
+          <xs:element name="value" type="xs:double" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:complexType>  
+      
+      <xs:complexType name="atom">
+        <xs:sequence>
+          <xs:element name="atom" type="atomValue" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:complexType>  
+      
+       <xs:complexType name="atomValue">
+         <xs:sequence>
+           <xs:element name="scale" type="xs:double" />
+           <xs:element name="position" type="xs:double" />
+           <xs:element name="frequency" type="xs:double" />
+           <xs:element name="phase" type="xs:double" />
+           <xs:element name="modulus" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>  
+              
+    </xs:schema>
+  </wsdl:types>
+
+  <wsdl:interface name="MatchingPursuit">
+      
+    <wsdl:operation name="runMP" pattern="http://www.w3.org/ns/wsdl/in-out">
+      <wsdl:input element="data" />
+      <wsdl:output element="Response" />
+    </wsdl:operation>
+  </wsdl:interface>
+</wsdl:description>
+

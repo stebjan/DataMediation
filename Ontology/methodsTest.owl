@@ -1,0 +1,811 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2015/7/eegMethods#"
+     xml:base="http://www.semanticweb.org/ontologies/2015/7/eegMethods"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#HasRealValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#HasRealValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ComplexFrequency"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#RealValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasCoefficientValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasCoefficientValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CoefficientValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasCoefficients -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasCoefficients">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWTCoefficients"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWTCoefficients"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasEpochs -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasEpochs">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epochs"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasFrequency -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasFrequency">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Frequency"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasImaginaryValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasImaginaryValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ComplexFrequency"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ImaginaryValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasInput -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasInput">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#IOType"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasModulus -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasModulus">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Modulus"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasName -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasName">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Name"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasOutput -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasOutput">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#IOType"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasPhase -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasPhase">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Phase"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasPosition -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasPosition">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Position"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasScale -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasScale">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Scale"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasSignalValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasSignalValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ICAComponent"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#SignalValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasUnit -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasUnit">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Unit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasVectorValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasVectorValue">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#VectorValue"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#WeightVector"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#NameType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#NameType">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Name"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Value -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Value">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CoefficientValue"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#SignalValue"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#VectorValue"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasScale"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Scale"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasPosition"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Position"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasFrequency"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Frequency"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasModulus"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Modulus"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasPhase"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Phase"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWTCoefficients -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWTCoefficients">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasCoefficients"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasCoefficientValue"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CoefficientValue"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Superclass Coefficient includes classes that have a double value.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#CoefficientValue -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CoefficientValue">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Value"/>
+        <rdfs:comment>CoefficientValue class reffers to double data value.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#ComplexFrequency -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ComplexFrequency">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasImaginaryValue"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ImaginaryValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#HasRealValue"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#RealValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWTCoefficients -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWTCoefficients">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FeaturedVector"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasCoefficients"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasName"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Name"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epochs -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epochs">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasEpochs"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#FeaturedVector -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FeaturedVector">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasVectorValue"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#VectorValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#FilteredSignal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FilteredSignal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Frequency -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Frequency">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient"/>
+        <rdfs:comment>Subclass of Coefficient class represents a value of frequency [Hz].</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#ICAComponent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ICAComponent">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#IOType -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#IOType"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#ImaginaryValue -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ImaginaryValue">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Value"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasCoefficientValue"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CoefficientValue"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasInput"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#IOType"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasOutput"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#IOType"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>It describes an analytic methods (as individuals of this class). It contains inputs and outputs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Modulus -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Modulus">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Name -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Name">
+        <rdfs:comment>Name class reffers to a string value representing a name of something.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Phase -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Phase">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Position -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Position">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#RealValue -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#RealValue">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Value"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasCoefficientValue"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CoefficientValue"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#ReconstructedSignal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ReconstructedSignal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+        <rdfs:comment>Subclass of Signal represents signal produced by filtering and reconstructing processes (decomposition and recomposition, artifacts removal, ...).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Scale -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Scale">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Coefficient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasSignalValue"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#SignalValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasUnit"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Unit"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#SignalValue -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#SignalValue">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Value"/>
+        <rdfs:comment>SignalValue reffers to a double value (amplitude of a signal).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Unit -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Unit"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Value -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Value"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#VectorValue -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#VectorValue">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Value"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#WeightVector -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#WeightVector">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#hasVectorValue"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#VectorValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Averaging -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Averaging">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+        <hasInput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epochs"/>
+        <hasOutput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWT -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWT">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+        <hasOutput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWTCoefficients"/>
+        <hasInput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWTCoefficient -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWTCoefficient"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWTCoefficients -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWTCoefficients"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#ComplexFrequency -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ComplexFrequency"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWT -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWT">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+        <hasOutput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWTCoefficients"/>
+        <hasInput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWTCoefficient -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWTCoefficient"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWTCoefficients -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWTCoefficients"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#DetectionOfEpochs -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#DetectionOfEpochs">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+        <hasOutput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+        <hasInput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#EEGSignal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#EEGSignal">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epochs -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epochs"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#FFT -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FFT">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+        <hasOutput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ComplexFrequency"/>
+        <hasInput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#FIR -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FIR">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+        <hasInput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+        <hasOutput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FilteredSignal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#FastICA -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FastICA">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+        <hasInput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+        <hasOutput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ICAComponent"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#FeaturedVector -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FeaturedVector"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#FilteredSignal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FilteredSignal"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#ICAComponent -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ICAComponent"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#MLP -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#MLP">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+        <hasInput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FeaturedVector"/>
+        <hasOutput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#WeightVector"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#MatchingPursuit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#MatchingPursuit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Method"/>
+        <hasOutput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom"/>
+        <hasInput rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#MícroVolts -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#MícroVolts">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Unit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2015/7/eegMethods#WeightVector -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#WeightVector"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#CWTCoefficients">
+        <rdfs:comment>CWTCoefficients class represents set of coefficients returned by Continuous Wavelet Transform.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Signal">
+        <rdfs:comment>Is equivalent to the ICAComponent class. Signal is set of values (signal amplitudes). Individuals are eegSignal, ecgSignal, ...).</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Atom">
+        <rdfs:comment>Collection of atoms is result provided by Matching Pursuit method. It includes values of scale, frequency, modulus, phase, and position.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epochs">
+        <rdfs:comment>Class Epochs includes set of Epochs (ref. class Epoch).</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#Epoch">
+        <rdfs:comment>Subclass of Signal represents an epoch as a part of the signal tagged by marker and offset. It has a name of a stimul what the epoch belongs to.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#DWTCoefficients">
+        <rdfs:comment>DWTCoefficients class represents set of coefficients returned by Discrete Wavelet Transform.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#FilteredSignal">
+        <rdfs:comment>Subclass of Signal represents filtered signal produced by filtering methods (e.g. pass filters, FIR, etc.).</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ICAComponent">
+        <rdfs:comment>Is equivalent to Signal. As result of the FastICA or ICA method, it represents a component from a decomposed signal.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/7/eegMethods#ComplexFrequency">
+        <rdfs:comment>ComplexFrequency is composed of RealFrexuency and ImaginaryFrequency values. This type of parameter is used in frequency analysis methods e.g. Fourier Transform.</rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
