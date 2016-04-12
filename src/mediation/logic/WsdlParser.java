@@ -13,7 +13,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by stebjan on 17.6.2015.
@@ -22,6 +25,35 @@ public class WsdlParser {
 
     private NodeList listOfComplexTypes;
     private Tree syntaxTree;
+
+    /**
+     *
+     * @param file - WSDL description file
+     * @param type - Enum of types (Request or Response)
+     * @return Array of two strings - the first one is name of an element, the second one is the annotation
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws SAXException
+     */
+    public String[] getSAWSDLAnnotation(File file, ParameterType type) throws ParserConfigurationException, IOException, SAXException {
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(file);
+        String[] map = new String[2];
+
+        doc.getDocumentElement().normalize();
+        Element root = getRoot(type, doc);
+        NodeList list = root.getElementsByTagName("xs:element");
+        for (int i = 0; i < list.getLength(); i++) {
+            Element e = (Element) list.item(i);
+            if (e.hasAttribute("sawsdl:modelReference")) {
+                map[0] = e.getAttribute("name");
+                map[1] = e.getAttribute("sawsdl:modelReference");
+                return map;
+            }
+        }
+        return null;
+    }
 
     public Tree parseXmlFile(File file, ParameterType type) throws ParserConfigurationException, SAXException, IOException {
 
@@ -37,17 +69,17 @@ public class WsdlParser {
         if (root != null) {
 
             syntaxTree = new Tree(root.getAttribute("name"));
-            System.out.println(syntaxTree.getRoot().getName());
+//            System.out.println(syntaxTree.getRoot().getName());
             findChildElements(root, syntaxTree.getRoot());
         } else {
-            //todo fuck with me
+            throw new IllegalArgumentException("Invalid xml file, root not found!");
         }
         return syntaxTree;
     }
 
     private Element getRoot(ParameterType type, Document doc) {
         NodeList listOfElements = doc.getElementsByTagName("xs:element");
-        System.out.println(listOfElements.getLength());
+//        System.out.println(listOfElements.getLength());
         Element root;
         for (int i = 0; i < listOfElements.getLength(); i++) {
             root = (Element) listOfElements.item(i);
@@ -78,10 +110,10 @@ public class WsdlParser {
 
     private void addElementToTree(Element element, Node node) {
         NodeList list = element.getElementsByTagName("xs:element");
-        System.out.println(list.getLength());
+//        System.out.println(list.getLength());
         for (int i = 0; i < list.getLength(); i++) {
             Element e = (Element) list.item(i);
-            System.out.println(e.getAttribute("name"));
+//            System.out.println(e.getAttribute("name"));
             Node newNode = node.addChild(e.getAttribute("name"));
             if (e.hasAttribute("minOccurs")) {
                 newNode.setMinOccurs(Integer.parseInt(e.getAttribute("minOccurs")));

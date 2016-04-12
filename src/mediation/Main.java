@@ -34,9 +34,6 @@ public class Main {
 //        System.out.println(tree.getRoot().getChildren().get(1).getChildren().get(0).getChildren().get(1).getChildren().get(0).getName());
 //        System.out.println(tree.getRoot().getChildren().get(1).getChildren().get(0).getChildren().get(2).getChildren().get(0).getName());
 
-        DataMediator mediator = new EEGDataMediator();
-        System.out.println(mediator.compatibleParameters("C:\\java\\eegdataprocessor\\trunk\\method_output_def\\detection_of_epochs.wsdl",
-                "C:\\java\\eegdataprocessor\\trunk\\method_output_def\\averaging.wsdl"));
         String x = "C:\\protege-5.0.0-beta-17-win\\methodsTest.owl";
         File file = new File(x);
 
@@ -44,7 +41,18 @@ public class Main {
         OWLOntology ontology = manager
                 .loadOntologyFromOntologyDocument(file);
         OntologyParser parser = new OntologyParser(ontology, manager.getOWLDataFactory());
-        parser.parseOntology();
+
+        DataMediator mediator = new EEGDataMediator();
+        System.out.println("Compatible: " + mediator.compatibleParameters("C:\\eegdataprocessor\\trunk\\method_output_def\\averaging.wsdl",
+                "C:\\eegdataprocessor\\trunk\\method_output_def\\fir.wsdl", parser));
+
+        mediator.getOutputTree();
+
+        mediator.mediateData("C:\\eegdataprocessor\\trunk\\method_output_def\\eegData.xml", "C:\\eegdataprocessor\\trunk\\method_output_def\\averaging.wsdl",
+                "C:\\eegdataprocessor\\trunk\\method_output_def\\fir.wsdl");
+
+
+
 
     }
 }
